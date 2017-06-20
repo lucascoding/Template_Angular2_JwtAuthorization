@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.6
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Template_Angular2_JwtAuthorization.UI", "Template_Angular2_JwtAuthorization.UI", "{4612F8DD-79D1-48F1-8DC1-1E1140225C72}"
+	ProjectSection(SolutionItems) = preProject
+		Template_Angular2_JwtAuthorization.UI\.angular-cli.json = Template_Angular2_JwtAuthorization.UI\.angular-cli.json
+		Template_Angular2_JwtAuthorization.UI\.editorconfig = Template_Angular2_JwtAuthorization.UI\.editorconfig
+		Template_Angular2_JwtAuthorization.UI\.gitignore = Template_Angular2_JwtAuthorization.UI\.gitignore
+		Template_Angular2_JwtAuthorization.UI\karma.conf.js = Template_Angular2_JwtAuthorization.UI\karma.conf.js
+		Template_Angular2_JwtAuthorization.UI\package.json = Template_Angular2_JwtAuthorization.UI\package.json
+		Template_Angular2_JwtAuthorization.UI\protractor.conf.js = Template_Angular2_JwtAuthorization.UI\protractor.conf.js
+		Template_Angular2_JwtAuthorization.UI\README.md = Template_Angular2_JwtAuthorization.UI\README.md
+		Template_Angular2_JwtAuthorization.UI\tsconfig.json = Template_Angular2_JwtAuthorization.UI\tsconfig.json
+		Template_Angular2_JwtAuthorization.UI\tslint.json = Template_Angular2_JwtAuthorization.UI\tslint.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Template_Angular2_JwtAuthorization.API", "Template_Angular2_JwtAuthorization.API", "{3F9060DD-4C09-4604-A3DD-D310070FA28C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Template_Angular2_JwtAuthorization.API", "Template_Angular2_JwtAuthorization.API\Template_Angular2_JwtAuthorization.API.csproj", "{C6CBD1A7-47FC-4415-8C12-414BB9A4B5DB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C6CBD1A7-47FC-4415-8C12-414BB9A4B5DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6CBD1A7-47FC-4415-8C12-414BB9A4B5DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6CBD1A7-47FC-4415-8C12-414BB9A4B5DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6CBD1A7-47FC-4415-8C12-414BB9A4B5DB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C6CBD1A7-47FC-4415-8C12-414BB9A4B5DB} = {3F9060DD-4C09-4604-A3DD-D310070FA28C}
+	EndGlobalSection
+EndGlobal
