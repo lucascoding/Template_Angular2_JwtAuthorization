@@ -51,6 +51,11 @@ namespace Template_Angular2_JwtAuthorization.API
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
+            //allow sharing resources between two localhosts
+            // global policy - assign here or on each controller
+            //this will need to be applied before 'app.UseMvc...'
+            app.UseCors("CorsPolicy");
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

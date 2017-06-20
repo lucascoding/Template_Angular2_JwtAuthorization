@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using Template_Angular2_JwtAuthorization.API.Data;
 using Template_Angular2_JwtAuthorization.API.Models;
+using Template_Angular2_JwtAuthorization.API.ViewModel;
 
 namespace Template_Angular2_JwtAuthorization.UT
 {
@@ -13,7 +14,7 @@ namespace Template_Angular2_JwtAuthorization.UT
     public class UserRepository_Tests
     {
         private ApplicationDbContext _ctx;
-        private UserRepository _userRepo;
+        private IUserRepository _userRepo;
 
         [TestInitialize]
         public void InitializeTests()
@@ -31,7 +32,7 @@ namespace Template_Angular2_JwtAuthorization.UT
         [TestMethod]
         public void RegisterUser()
         {
-            var user = new User { Email = "x@x.x", Name = "xx", Password = "xxx" };
+            var user = new UserViewModel { Email = "x@x.x", Name = "xx", Password = "xxx" };
 
             _userRepo.RegisterUser(user);
 
@@ -39,5 +40,25 @@ namespace Template_Angular2_JwtAuthorization.UT
 
             Assert.AreEqual("xx", dbUser.Name);
         }
+
+        [TestMethod]
+        public void LogUser_Pass()
+        {
+            var user = _ctx.Users.Add(new User { Email = "x@x.x", Name = "name", Password = "pass" });
+            _ctx.SaveChanges();
+
+            var logResult = _userRepo.LogUser("name", "pass");
+
+            Assert.AreEqual(true, logResult);
+        }
+
+        [TestMethod]
+        public void LogUser_Fail()
+        {
+            var logResult = _userRepo.LogUser("name", "pass");
+
+            Assert.AreEqual(false, logResult);
+        }
+
     }
 }
