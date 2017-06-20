@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Template_Angular2_JwtAuthorization.API.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace Template_Angular2_JwtAuthorization.API
 {
@@ -29,6 +31,18 @@ namespace Template_Angular2_JwtAuthorization.API
         {
             // Add framework services.
             services.AddMvc();
+
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")), ServiceLifetime.Transient);
+
+            //allow sharing resources between two localhosts
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials());
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
