@@ -4,17 +4,41 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { AlertComponent } from "app/_directives/alert/alert.component";
+import { AuthGuard } from "app/_directives/_guards/auth.guard";
+import { AlertService } from "app/_services/alert.service";
+import { AuthenticationService } from "app/_services/authentication.service";
+import { UserService } from "app/_services/user.service";
+import { routing } from "app/app.routing";
+
+// Application wide providers
+const APP_PROVIDERS = [
+  AuthGuard,
+  AlertService,
+  AuthenticationService,
+  UserService,
+];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AlertComponent,
+    HomeComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    routing
   ],
-  providers: [],
+  providers: [
+    APP_PROVIDERS
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
