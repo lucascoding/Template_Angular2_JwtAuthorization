@@ -13,6 +13,7 @@ import { AlertService } from "app/_services/alert.service";
 import { AuthenticationService } from "app/_services/authentication.service";
 import { UserService } from "app/_services/user.service";
 import { routing } from "app/app.routing";
+import { WebApiService } from "app/_services/webApi.service";
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -20,6 +21,7 @@ const APP_PROVIDERS = [
   AlertService,
   AuthenticationService,
   UserService,
+  WebApiService
 ];
 
 @NgModule({

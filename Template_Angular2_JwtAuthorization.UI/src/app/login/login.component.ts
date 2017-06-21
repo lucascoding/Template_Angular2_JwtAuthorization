@@ -20,6 +20,9 @@ export class LoginComponent implements OnInit {
     private alertService: AlertService) { }
 
   ngOnInit() {
+
+    console.log("Login panel loaded");
+
     // reset login status
     this.authenticationService.logout();
 
@@ -29,9 +32,11 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.loading = true;
+    console.log("User starts the logging process");
     this.authenticationService.login(this.model.username, this.model.password)
       .subscribe(
       data => {
+        console.log('xxx2222');
         this.router.navigate([this.returnUrl]);
       },
       error => {

@@ -32,32 +32,32 @@ namespace Template_Angular2_JwtAuthorization.UT
         [TestMethod]
         public void RegisterUser()
         {
-            var user = new UserViewModel { Email = "x@x.x", Name = "xx", Password = "xxx" };
+            var user = new UserViewModel { Email = "x@x.x", Username = "xx", Password = "xxx" };
 
             _userRepo.RegisterUser(user);
 
-            var dbUser = _ctx.Users.First(x => x.Name == "xx");
+            var dbUser = _ctx.Users.First(x => x.Username == "xx");
 
-            Assert.AreEqual("xx", dbUser.Name);
+            Assert.AreEqual("xx", dbUser.Username);
         }
 
         [TestMethod]
         public void LogUser_Pass()
         {
-            var user = _ctx.Users.Add(new User { Email = "x@x.x", Name = "name", Password = "pass" });
+            var user = _ctx.Users.Add(new User { Email = "x@x.x", Username = "name", Password = "pass" });
             _ctx.SaveChanges();
 
-            var logResult = _userRepo.LogUser("name", "pass");
+            var userVm = _userRepo.LogUser(new UserViewModel { Username = "name", Password = "pass" });
 
-            Assert.AreEqual(true, logResult);
+            Assert.AreNotEqual(null, userVm);
         }
 
         [TestMethod]
         public void LogUser_Fail()
         {
-            var logResult = _userRepo.LogUser("name", "pass");
+            var userVm = _userRepo.LogUser(new UserViewModel { Username = "name", Password = "pass" });
 
-            Assert.AreEqual(false, logResult);
+            Assert.AreEqual(null, userVm);
         }
 
     }

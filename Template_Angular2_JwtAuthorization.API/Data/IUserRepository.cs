@@ -9,6 +9,6 @@ namespace Template_Angular2_JwtAuthorization.API.Data
     public interface IUserRepository
     {
         void RegisterUser(UserViewModel user);
-        bool LogUser(string username, string password);
+        UserViewModel LogUser(UserViewModel user);
     }
 }

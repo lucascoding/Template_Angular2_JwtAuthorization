@@ -8,9 +8,10 @@ using Template_Angular2_JwtAuthorization.API.Data;
 namespace Template_Angular2_JwtAuthorization.API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170621210905_Name replaced with Username in User model")]
+    partial class NamereplacedwithUsernameinUsermodel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")

@@ -9,7 +9,7 @@ using Template_Angular2_JwtAuthorization.API.ViewModel;
 
 namespace Template_Angular2_JwtAuthorization.API.Data
 {
-    public class UserRepository: IUserRepository
+    public class UserRepository : IUserRepository
     {
         private ApplicationDbContext _ctx;
 
@@ -31,11 +31,13 @@ namespace Template_Angular2_JwtAuthorization.API.Data
             _ctx.SaveChanges();
         }
 
-        public bool LogUser(string username, string password)
+        public UserViewModel LogUser(UserViewModel user)
         {
-            var u = _ctx.Users.FirstOrDefault(x => (x.Name == username && x.Password == password));
-            return u == null ? false : true;
+            var u = _ctx.Users.FirstOrDefault(x => (x.Username == user.Username && x.Password == user.Password));
+            return u == null ? null : Mapper.Map<User, UserViewModel>(u);
         }
-        
+
+
+
     }
 }

@@ -1,7 +1,7 @@
 import { Http, Response, Headers } from '@angular/http';
 
 export class WebApiService {
-    webServiceAddressIp: string = "http://localhost:35611/api";
+    webServiceAddressIp: string = "http://localhost:51023/api";
     headers: Headers = new Headers();
 
     constructor() {
