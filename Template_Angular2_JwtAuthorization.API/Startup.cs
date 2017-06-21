@@ -33,6 +33,7 @@ namespace Template_Angular2_JwtAuthorization.API
             services.AddMvc();
 
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")), ServiceLifetime.Transient);
+            services.AddTransient<IUserRepository, UserRepository>();
 
             //allow sharing resources between two localhosts
             services.AddCors(options =>
