@@ -10,7 +10,6 @@ export class UserService {
         public webApiService: WebApiService) { }
 
     getMyInfo() {
-        //let options = new RequestOptions({ headers: this.webApiService.headers });
         return this.http.get(`${this.webApiService.webServiceAddressIp}/user/GetMyInfo`, this.jwt()).map((response: Response) => response.json());
     }
 
@@ -38,12 +37,11 @@ export class UserService {
 
     private jwt() {
         // create authorization header with jwt token
-        let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        let token = JSON.parse(localStorage.getItem('access_token'));
         let headers = this.webApiService.headers;
-        console.log(currentUser);
-        if (currentUser && currentUser.token) {
+        if (token) {
             headers.delete('Authorization');
-            headers.append('Authorization', 'Bearer ' + currentUser.token);
+            headers.append('Authorization', 'Bearer ' + token);
             return new RequestOptions({ headers: headers });
         }
     }
