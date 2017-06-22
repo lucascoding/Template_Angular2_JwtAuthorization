@@ -19,5 +19,7 @@ namespace Template_Angular2_JwtAuthorization.API.ViewModel
 
         [Required]
         public string Email { get; set; }
+
+        public string Token { get; set; }
     }
 }

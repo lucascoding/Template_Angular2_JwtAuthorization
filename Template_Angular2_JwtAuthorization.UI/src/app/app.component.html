@@ -1,8 +1,14 @@
 <div class="jumbotron">
-    <div class="container">
-        <div class="col-sm-8 col-sm-offset-2">
-            <app-alert></app-alert>
-            <router-outlet></router-outlet>
-        </div>
+  <div class="container">
+    <div class="col-sm-8 col-sm-offset-2">
+      <app-alert></app-alert>
+      <router-outlet></router-outlet>
     </div>
+    <div class="row">
+      <button class="btn btn-primary" type="button" (click)="showMyInfo()">Show My Info</button>
+    </div>
+    <div class="row">
+      {{myInfo | json}}
+    </div>
+  </div>
 </div>

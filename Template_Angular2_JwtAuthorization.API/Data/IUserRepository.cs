@@ -10,5 +10,6 @@ namespace Template_Angular2_JwtAuthorization.API.Data
     {
         void RegisterUser(UserViewModel user);
         UserViewModel LogUser(UserViewModel user);
+        UserViewModel GetCurLoggedInUser(string token);
     }
 }

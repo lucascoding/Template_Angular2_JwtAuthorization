@@ -34,7 +34,22 @@ namespace Template_Angular2_JwtAuthorization.API.Data
         public UserViewModel LogUser(UserViewModel user)
         {
             var u = _ctx.Users.FirstOrDefault(x => (x.Username == user.Username && x.Password == user.Password));
-            return u == null ? null : Mapper.Map<User, UserViewModel>(u);
+            String token = null;
+            var userVm = Mapper.Map<User, UserViewModel>(u);
+            if (u != null)
+            {
+                token = JwtTokenHelper.EncodeToken(userVm);
+                userVm.Token = token;
+            }
+
+            return u == null ? null : userVm;
+        }
+
+        public UserViewModel GetCurLoggedInUser(string token)
+        {
+            var decodedToken = JwtTokenHelper.DecodeToken(token);
+
+            return decodedToken.TokenJson;
         }
 
 

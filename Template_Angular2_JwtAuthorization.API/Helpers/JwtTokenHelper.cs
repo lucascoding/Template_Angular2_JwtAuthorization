@@ -5,14 +5,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Template_Angular2_JwtAuthorization.API.ViewModel;
 
 namespace Template_Angular2_JwtAuthorization.API.Helpers
 {
     public class JwtTokenHelper
     {
-        private static string _secret = "GQDstcKsx0NHjPOuXOYg5MbeJ1XT0uFiwDVvVBrk";
+        private static string _secret = "GQDst!S!scKsx0NHjPOuXOYg5Mbekasdka12d2ld!!J1XT0uFiwDVvVBrk";
 
-        public static string EncodeToken(object obj)
+        public static string EncodeToken(UserViewModel obj)
         {
             IJwtAlgorithm algorithm = new HMACSHA256Algorithm();
             IJsonSerializer serializer = new JsonNetSerializer();
@@ -35,7 +36,7 @@ namespace Template_Angular2_JwtAuthorization.API.Helpers
                 IJwtDecoder decoder = new JwtDecoder(serializer, validator, urlEncoder);
 
                 var json = decoder.Decode(token, _secret, verify: true);
-                var payload = decoder.DecodeToObject<IDictionary<string, object>>(token, _secret, true);
+                var payload = decoder.DecodeToObject<UserViewModel>(token, _secret, true);
 
                 return new DecodedToken { IsValid = true, TokenJson = payload, TokenString = json };
             }
@@ -53,7 +54,7 @@ namespace Template_Angular2_JwtAuthorization.API.Helpers
         {
             public bool IsValid { get; set; }
             public string ErrorMsg { get; set; }
-            public IDictionary<string, object> TokenJson { get; set; }
+            public UserViewModel TokenJson { get; set; }
             public string TokenString { get; set; }
         }
     }

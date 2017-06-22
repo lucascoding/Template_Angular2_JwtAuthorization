@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ using Template_Angular2_JwtAuthorization.API.ViewModel;
 namespace Template_Angular2_JwtAuthorization.API.Controllers.api
 {
     [Route("api/[controller]")]
-    public class UserController: Controller
+    public class UserController : Controller
     {
         private readonly IUserRepository _userRepo;
 
@@ -24,11 +25,22 @@ namespace Template_Angular2_JwtAuthorization.API.Controllers.api
         {
             return Ok();
         }
-        
+
         [HttpPost("Log")]
         public IActionResult LogUser([FromBody] UserViewModel user)
         {
             return Json(_userRepo.LogUser(user));
+        }
+
+        [HttpGet("GetMyInfo")]
+        public IActionResult GetCurLoggedInUser()
+        {
+            var token = Request.Headers["Authorization"];
+            if (token.ToString().Contains("Bearer "))
+                token = token.ToString().Replace("Bearer ", "");
+            else return Json("");
+
+            return Json(_userRepo.GetCurLoggedInUser(token));
         }
 
 
